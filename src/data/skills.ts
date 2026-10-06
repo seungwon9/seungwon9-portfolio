@@ -1,17 +1,22 @@
 export const skillGroups = [
   {
-    title: "업무 시스템 설계",
-    description: "현업 흐름을 이해하고 화면, 데이터, 시스템 구조로 옮긴 경험을 프로젝트 근거와 함께 정리할 예정입니다.",
-    technologies: [],
+    title: "Web & Desktop",
+    description: "업무 흐름과 데이터 관계를 다루는 웹·데스크톱 애플리케이션 개발",
+    technologies: ["React", "Next.js", "TypeScript", "Electron"],
   },
   {
-    title: "인터랙티브 콘텐츠",
-    description: "기획을 상호작용과 로직으로 구현한 경험을 프로젝트 근거와 함께 정리할 예정입니다.",
-    technologies: [],
+    title: "Mobile & Interactive",
+    description: "모바일 서비스와 입력·판정이 필요한 인터랙티브 콘텐츠 개발",
+    technologies: ["Flutter", "Dart", "Phaser3", "Unity"],
   },
   {
-    title: "AI · 데이터 연동",
-    description: "분석 기능을 실제 서비스 흐름과 연결한 경험을 프로젝트 근거와 함께 정리할 예정입니다.",
-    technologies: [],
+    title: "Data & Integration",
+    description: "로컬 데이터 저장, 인증, Backend API를 사용자 기능에 연결",
+    technologies: ["SQLite", "Firebase", "REST API"],
+  },
+  {
+    title: "Automation & Embedded",
+    description: "반복 업무 자동화와 하드웨어 제어 프로그램 개발",
+    technologies: ["Python", "C", "STM32"],
   },
 ];

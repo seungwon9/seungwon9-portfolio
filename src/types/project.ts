@@ -85,6 +85,7 @@ export type Project = {
   title: string;
   eyebrow: string;
   shortDescription: string;
+  homeDescription?: string;
   overview: string;
   overviewMedia: ProjectMedia;
   period?: string;

@@ -9,7 +9,7 @@ export function SkillsSection() {
         <SectionHeading
           eyebrow="03 / Capabilities"
           title="기술보다 활용 맥락으로"
-          description="실제 프로젝트에서 사용한 기술과 판단 근거가 정리되면 각 영역에 연결합니다."
+          description="프로젝트에서 직접 사용한 기술을 어떤 문제에 적용했는지 기준으로 묶었습니다."
         />
         <div className="skills-grid">
           {skillGroups.map((group, index) => (
@@ -17,9 +17,7 @@ export function SkillsSection() {
               <span className="skill-index">0{index + 1}</span>
               <h3>{group.title}</h3>
               <p>{group.description}</p>
-              <div className="skill-tech">
-                {group.technologies.length > 0 ? group.technologies.join(" · ") : "기술 목록 준비 중"}
-              </div>
+              <div className="skill-tech">{group.technologies.join(" · ")}</div>
             </article>
           ))}
         </div>

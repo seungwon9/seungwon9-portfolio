@@ -24,7 +24,7 @@ export function ProjectCard({ project }: { project: Project }) {
             </div>
             <span className="arrow-link" aria-hidden="true">↗</span>
           </div>
-          <p className="project-description">{project.shortDescription}</p>
+          <p className="project-description">{project.homeDescription ?? project.shortDescription}</p>
           <ul className="tag-list" aria-label="핵심 키워드">
             {project.keywords.map((keyword) => <li key={keyword}>{keyword}</li>)}
           </ul>

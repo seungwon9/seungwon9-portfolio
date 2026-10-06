@@ -9,8 +9,11 @@ export function ContactSection() {
         <div className="contact-grid">
           <h2 id="contact-title">함께 해결할 문제에 대해 이야기해 주세요.</h2>
           <div>
-            <p>연락처와 외부 프로필은 공개 정보를 확정한 뒤 연결할 예정입니다.</p>
-            <span className="contact-placeholder">{profile.email}</span>
+            <p>GitHub와 블로그에서 코드와 프로젝트 기록을 확인할 수 있습니다.</p>
+            <div className="contact-links">
+              <a href={profile.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+              <a href={profile.blog} target="_blank" rel="noreferrer">Blog <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
       </Container>

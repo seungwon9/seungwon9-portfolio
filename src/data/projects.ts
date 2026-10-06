@@ -44,6 +44,7 @@ export const projects: Project[] = [
     title: "제조업체 ERP",
     eyebrow: "Featured Project 01",
     shortDescription: "Excel로 분산 관리되던 제조 업무를 하나의 데이터 흐름과 시스템 구조로 정리한 프로젝트입니다.",
+    homeDescription: "Excel로 분산 관리되던 주문·생산·자재·재고·납품 업무를 하나의 데이터 흐름으로 구조화했습니다.",
     overview: "실제 데크 제조업체의 Excel 기반 업무를 확인하고, 주문부터 납품까지 이어지는 흐름과 기준정보의 관계를 시스템 구조로 정리했습니다.",
     overviewMedia: {
       id: "manufacturing-erp-overview",
@@ -296,6 +297,7 @@ export const projects: Project[] = [
     title: "인지훈련 게임 20종",
     eyebrow: "Featured Project 02",
     shortDescription: "20종의 인지훈련 게임을 구현하고, 반복되는 개발·검증 과정까지 웹 기반으로 개선했습니다.",
+    homeDescription: "의료연구원의 기획을 인지훈련 게임 20종의 로직으로 구현하고, Unity 기반 검증 과정을 React + Phaser3 웹 방식으로 개선했습니다.",
     overview: "의료연구원의 기획서를 게임 로직으로 구현하고, 브라우저에서 수정 결과를 바로 확인할 수 있는 웹 개발 구조를 도입했습니다.",
     overviewMedia: placeholderMedia("cognitive-training-games-overview", "인지훈련 게임 20종 전체 화면"),
     period: "내용 준비 중",
@@ -489,6 +491,7 @@ export const projects: Project[] = [
     title: "CatchVoca AI 단어장",
     eyebrow: "Featured Project 03",
     shortDescription: "학습 자료를 입력하면 AI 분석 결과를 단어장으로 연결하고, 생성된 단어를 실제 학습에 활용할 수 있도록 사용자 흐름을 구현했습니다.",
+    homeDescription: "AI 분석 Backend를 Flutter 사용자 흐름과 연결한 단어장 서비스를 기획하고 Frontend를 개발했습니다.",
     overview: "직접 기획한 AI 기반 단어장 서비스로, 분석 Backend의 결과를 입력부터 단어장 생성과 관리까지 이어지는 사용자 경험으로 연결했습니다.",
     overviewMedia: placeholderMedia("catchvoca-overview", "CatchVoca 메인 입력 화면"),
     period: "내용 준비 중",
