@@ -1,4 +1,4 @@
-import type { ProblemSolvingCase, Project, ProjectMedia } from "@/types/project";
+import type { Project, ProjectMedia } from "@/types/project";
 
 const placeholderMedia = (
   id: string,
@@ -35,43 +35,6 @@ const placeholderMedia = (
     caption: "실제 화면 또는 구조도 준비 중",
   };
 };
-
-const placeholderCases = (slug: string): ProblemSolvingCase[] => [
-  {
-    id: `${slug}-case-01`,
-    title: "문제 해결 사례 01",
-    problem: { summary: "해결한 문제와 당시 맥락을 정리할 예정입니다." },
-    decision: { summary: "선택지와 판단 근거를 정리할 예정입니다." },
-    implementation: { summary: "직접 구현한 범위와 구조를 정리할 예정입니다." },
-    evidenceResult: { summary: "검증 방법과 확인된 결과를 정리할 예정입니다." },
-    media: [placeholderMedia(`${slug}-case-01-media`, "사례 01 구조도", "diagram")],
-  },
-  {
-    id: `${slug}-case-02`,
-    title: "문제 해결 사례 02",
-    problem: { summary: "실제 사례 선정 후 내용을 추가할 예정입니다." },
-    decision: { summary: "결정 과정과 트레이드오프를 추가할 예정입니다." },
-    implementation: { summary: "구현 내용과 담당 범위를 추가할 예정입니다." },
-    evidenceResult: { summary: "근거가 확인된 검증 내용만 추가할 예정입니다." },
-    media: [placeholderMedia(`${slug}-case-02-media`, "사례 02 Before / After", "before-after")],
-  },
-  {
-    id: `${slug}-case-03`,
-    title: "문제 해결 사례 03",
-    problem: { summary: "실제 사례 선정 후 내용을 추가할 예정입니다." },
-    decision: { summary: "결정 과정과 판단 기준을 추가할 예정입니다." },
-    implementation: { summary: "구현 흐름을 실제 화면과 함께 추가할 예정입니다." },
-    evidenceResult: { summary: "검증 자료와 결과가 준비되면 추가할 예정입니다." },
-    media: [placeholderMedia(`${slug}-case-03-media`, "사례 03 실제 화면")],
-  },
-];
-
-const placeholderContribution = (slug: string) => ({
-  id: `${slug}-contribution-placeholder`,
-  title: "기여 내용 준비 중",
-  summary: "직접 담당한 기능과 협업 범위를 실제 화면 또는 구조도와 함께 정리할 예정입니다.",
-  media: [placeholderMedia(`${slug}-contribution-media`, "기여 화면 또는 구조도")],
-});
 
 export const projects: Project[] = [
   {
@@ -525,34 +488,180 @@ export const projects: Project[] = [
     featuredOrder: 3,
     title: "CatchVoca AI 단어장",
     eyebrow: "Featured Project 03",
-    shortDescription: "서비스 흐름을 기획하고 AI 분석 Backend를 사용자 경험으로 연결한 경험을 정리하는 프로젝트입니다.",
-    overview: "서비스 흐름의 기획부터 AI 분석 Backend와 사용자 경험의 연결까지 실제 수행 내용을 정리할 예정입니다.",
-    overviewMedia: placeholderMedia("catchvoca-overview", "CatchVoca 대표 화면"),
+    shortDescription: "학습 자료를 입력하면 AI 분석 결과를 단어장으로 연결하고, 생성된 단어를 실제 학습에 활용할 수 있도록 사용자 흐름을 구현했습니다.",
+    overview: "직접 기획한 AI 기반 단어장 서비스로, 분석 Backend의 결과를 입력부터 단어장 생성과 관리까지 이어지는 사용자 경험으로 연결했습니다.",
+    overviewMedia: placeholderMedia("catchvoca-overview", "CatchVoca 메인 입력 화면"),
     period: "내용 준비 중",
-    role: "내용 준비 중",
-    team: "내용 준비 중",
+    role: "서비스 기획 · Flutter Frontend 개발",
+    team: "Backend 개발자",
     users: "내용 준비 중",
-    projectStatus: "내용 준비 중",
-    technologies: [],
-    keywords: ["서비스 기획", "AI 분석", "사용자 경험"],
-    context: ["서비스를 시작한 배경과 사용자 문제를 정리할 예정입니다."],
-    responsibilities: ["직접 기획하고 구현한 범위를 정리할 예정입니다."],
-    collaborationScope: ["팀 구성과 협업 범위를 정리할 예정입니다."],
-    contributions: [placeholderContribution("catchvoca")],
-    technologyScope: { direct: [], collaboration: [] },
-    problemSolvingCases: placeholderCases("catchvoca"),
+    projectStatus: "운영 Backend 종료 · Demo 환경 사용",
+    domain: "AI 기반 영어 학습 서비스",
+    technologies: ["Flutter", "Dart", "Firebase Authentication", "REST API"],
+    keywords: ["서비스 기획", "AI 분석 연동", "단어장 관리"],
+    context: [
+      "텍스트, PDF·이미지, URL 형태의 학습 자료를 분석 요청하고 그 결과를 사용자별 단어장으로 이어주는 서비스를 기획했습니다.",
+      "Frontend는 Flutter로 구현했으며, AI 분석과 데이터 저장을 담당하는 Backend는 팀원이 개발했습니다.",
+    ],
+    responsibilities: [
+      "자료 입력부터 분석 요청, 단어장 생성과 학습으로 이어지는 서비스 흐름을 기획했습니다.",
+      "Flutter로 로그인, 입력, Loading, 단어장 목록·상세, 편집과 즐겨찾기 관리 UI를 구현했습니다.",
+      "Firebase Authentication과 REST API를 연동해 Backend 기능을 사용자 경험으로 연결했습니다.",
+    ],
+    collaborationScope: [
+      "팀원이 AI 분석 Backend와 데이터 저장 영역을 담당했으며, Frontend에서는 제공된 API 응답 구조를 기준으로 사용자 흐름을 구현했습니다.",
+    ],
+    contributions: [
+      {
+        id: "catchvoca-contribution-service-flow",
+        title: "서비스 흐름 기획",
+        summary: "텍스트, PDF·이미지, URL을 입력하고 분석 결과를 단어장으로 사용하는 전체 사용자 흐름을 기획했습니다.",
+        scope: "direct",
+      },
+      {
+        id: "catchvoca-contribution-frontend",
+        title: "Flutter Frontend",
+        summary: "로그인, 입력, Loading, 단어장 목록·상세, 편집 및 즐겨찾기 관리 UI를 Flutter로 구현했습니다.",
+        scope: "direct",
+      },
+      {
+        id: "catchvoca-contribution-backend-integration",
+        title: "Backend 기능 연결",
+        summary: "Firebase 인증과 REST API를 이용해 분석 요청 및 사용자별 단어장 관리 기능을 Frontend에 연결했습니다.",
+        scope: "direct",
+      },
+    ],
+    technologyScope: {
+      direct: ["Flutter", "Dart", "Firebase Authentication", "REST API 연동"],
+      collaboration: ["AI Analysis Backend", "Backend Data Storage"],
+    },
+    problemSolvingCases: [
+      {
+        id: "catchvoca-case-01",
+        title: "단어를 직접 입력하는 대신 자료 자체를 입력하도록 설계",
+        problem: {
+          summary: "기존 단어장 사용 과정에서는 학습할 단어를 찾고 뜻과 예문을 확인한 뒤 직접 입력하는 반복 작업이 필요하다고 판단했습니다.",
+        },
+        decision: {
+          summary: "단어를 하나씩 입력하는 대신 사용자가 이미 보고 있는 텍스트, PDF·이미지, URL을 학습 자료로 제출하는 흐름을 설계했습니다.",
+        },
+        implementation: {
+          summary: "Flutter에서 입력 유형과 언어를 선택하고 자료를 분석 요청한 뒤, Loading 상태를 거쳐 생성된 단어장으로 이동하도록 화면 흐름을 구현했습니다.",
+        },
+        evidenceResult: {
+          summary: "AI 내부 처리 방식을 직접 구현한 것이 아니라, 세 가지 자료 입력 방식이 분석 요청과 단어장 생성으로 이어지도록 사용자 경험을 구성했습니다.",
+        },
+        media: [
+          {
+            id: "catchvoca-material-to-wordbook-flow",
+            type: "before-after",
+            title: "직접 입력에서 자료 기반 단어장 생성으로",
+            before: {
+              label: "Before",
+              description: "단어 정보를 찾아 직접 입력하는 반복 과정",
+              items: ["단어 찾기", "뜻 찾기", "예문 찾기", "직접 입력"],
+            },
+            after: {
+              label: "After",
+              description: "학습 자료를 분석 요청해 단어장으로 연결하는 과정",
+              items: ["텍스트 / 파일 / URL", "분석 요청", "단어장"],
+            },
+            caption: "AI 내부 구현이 아닌 자료 입력부터 단어장까지의 서비스 흐름을 비교했습니다.",
+          },
+        ],
+      },
+      {
+        id: "catchvoca-case-02",
+        title: "AI 분석 기능을 실제 사용자 경험으로 연결",
+        problem: {
+          summary: "Backend의 분석 기능을 사용자가 실제로 이용하려면 인증, 입력과 요청, 대기 상태, 결과 조회를 하나의 Frontend 흐름으로 연결해야 했습니다.",
+        },
+        decision: {
+          summary: "Frontend와 Backend의 책임을 구분하고, Flutter가 Firebase 인증과 REST API 요청·응답을 사용자 화면과 상태로 연결하도록 구성했습니다.",
+        },
+        implementation: {
+          summary: "텍스트, PDF·이미지, URL 분석 요청과 Loading UI를 구현하고, 분석 완료 후 Wordbook API를 통해 사용자별 단어장 화면으로 이어지게 했습니다.",
+        },
+        evidenceResult: {
+          summary: "Frontend에서 분석 요청부터 생성된 단어장 조회까지의 흐름을 구현했습니다. AI 모델 호출, Prompt, OCR, Backend 저장 로직은 팀원의 협업 영역입니다.",
+        },
+        media: [
+          {
+            id: "catchvoca-frontend-backend-flow",
+            type: "diagram",
+            title: "Frontend와 Backend의 연결 범위",
+            alt: "Flutter UI에서 분석 API와 Backend를 거쳐 단어장 UI로 이어지는 구조",
+            nodes: [
+              { label: "Flutter UI", description: "직접 담당 · 입력과 상태 UI", tone: "success" },
+              { label: "Analysis REST API", description: "직접 담당 · 요청 연동", tone: "decision" },
+              { label: "Backend", description: "협업 영역 · AI/OCR/저장 내부 구현", tone: "collaboration" },
+              { label: "Wordbook API", description: "직접 담당 · 응답 연동", tone: "decision" },
+              { label: "Flutter Wordbook UI", description: "직접 담당 · 조회와 관리 UI", tone: "success" },
+            ],
+            caption: "실선 색상 노드는 Frontend에서 연결한 영역이며, 점선 노드는 팀원이 담당한 Backend 내부 영역입니다.",
+          },
+        ],
+      },
+      {
+        id: "catchvoca-case-03",
+        title: "생성으로 끝나지 않고 실제 단어장 관리까지 연결",
+        problem: {
+          summary: "분석 결과를 한 번 보여주는 것만으로는 생성된 단어를 이후 학습에서 다시 찾고 정리하기 어려웠습니다.",
+        },
+        decision: {
+          summary: "분석 결과를 사용자별 단어장으로 조회하고, 상세 학습정보와 편집 기능을 통해 계속 활용할 수 있는 흐름으로 확장했습니다.",
+        },
+        implementation: {
+          summary: "단어장 목록과 상세 조회, 이름 변경·삭제, 여러 단어 선택, 선택 삭제, 즐겨찾기 단어장 생성과 이동 기능을 Flutter UI와 API 연동으로 구현했습니다.",
+        },
+        evidenceResult: {
+          summary: "단어의 뜻, 품사, 예문, 번역, 발음, 동의어, 반의어를 확인하고 필요한 단어를 선택해 즐겨찾기로 이동하거나 정리할 수 있습니다.",
+        },
+        media: [
+          {
+            id: "catchvoca-wordbook-management-flow",
+            type: "diagram",
+            title: "생성된 단어장의 학습·관리 흐름",
+            alt: "단어장 조회부터 상세 정보와 다중 선택, 즐겨찾기 이동, 편집으로 이어지는 흐름",
+            nodes: [
+              { label: "단어장 조회" },
+              { label: "상세 정보", tone: "decision" },
+              { label: "다중 선택" },
+              { label: "즐겨찾기로 이동", tone: "success" },
+              { label: "삭제 / 이름 변경" },
+            ],
+            caption: "분석 결과를 생성하는 단계 이후에도 실제 학습에 사용할 수 있도록 관리 기능을 연결했습니다.",
+          },
+        ],
+      },
+    ],
     resultAndDemo: {
-      summary: "확인 가능한 결과와 서비스 화면을 준비 중입니다.",
-      evidence: [],
+      summary: "자료 입력과 분석 요청부터 사용자별 단어장 조회, 상세 학습정보 확인, 편집과 즐겨찾기 관리까지 이어지는 Flutter 사용자 흐름을 구현했습니다.",
+      evidence: [
+        "텍스트, PDF·이미지, URL 입력과 언어 선택 및 분석 요청 UI 구현",
+        "Firebase/Google 로그인과 사용자별 단어장 목록·상세 조회 연결",
+        "다중 선택, 삭제, 이름 변경, 즐겨찾기 단어장 생성과 이동 기능 구현",
+        "현재 운영 Backend는 종료되어, 포트폴리오 시연은 기존 API 응답 구조를 기반으로 복원한 Demo 환경을 사용합니다.",
+      ],
       media: [
-        placeholderMedia("catchvoca-result-screen", "서비스 화면"),
-        placeholderMedia("catchvoca-result-video", "분석에서 학습까지의 흐름", "video"),
+        placeholderMedia("catchvoca-main-input", "CatchVoca 메인 입력 화면"),
+        placeholderMedia("catchvoca-text-input", "텍스트 입력 화면"),
+        placeholderMedia("catchvoca-analysis-loading", "분석 대기 Loading 화면"),
+        placeholderMedia("catchvoca-generated-wordbook", "생성된 단어장 화면"),
+        placeholderMedia("catchvoca-word-detail", "단어 상세 학습정보 화면"),
+        placeholderMedia("catchvoca-multi-select", "다중 선택 화면"),
+        placeholderMedia("catchvoca-favorite-result", "즐겨찾기 이동 결과 화면"),
+        placeholderMedia("catchvoca-analysis-demo", "입력부터 단어장 생성까지", "video"),
+        placeholderMedia("catchvoca-favorite-demo", "다중 선택부터 즐겨찾기 이동까지", "video"),
       ],
     },
-    learnings: [],
+    learnings: [
+      "AI 기능 자체보다 사용자가 실제로 사용할 수 있는 흐름으로 연결하는 것이 중요하다는 점을 배웠습니다.",
+      "팀 프로젝트에서는 Frontend와 Backend의 책임을 명확히 나누고, API 응답 구조에 맞춰 사용자 경험을 구성해야 한다는 점을 확인했습니다.",
+    ],
     seo: {
       title: "CatchVoca AI 단어장",
-      description: "CatchVoca AI 단어장 프로젝트 사례를 정리하는 페이지입니다.",
+      description: "AI 분석 Backend를 자료 입력부터 단어장 생성과 학습·관리까지 이어지는 Flutter 사용자 경험으로 연결한 프로젝트입니다.",
     },
   },
 ];

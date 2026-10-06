@@ -43,7 +43,7 @@ export type DiagramMedia = MediaBase & {
   nodes?: Array<{
     label: string;
     description?: string;
-    tone?: "default" | "decision" | "blocked" | "success";
+    tone?: "default" | "decision" | "collaboration" | "blocked" | "success";
   }>;
   width?: number;
   height?: number;

@@ -1115,6 +1115,11 @@ video {
   background: var(--accent-soft);
 }
 
+.diagram-node-collaboration {
+  border-style: dashed;
+  background: var(--surface-soft);
+}
+
 .diagram-node-blocked {
   border-color: #b7796f;
   background: #f4e6e2;
