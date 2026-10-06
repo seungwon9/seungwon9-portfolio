@@ -88,6 +88,7 @@ export type Project = {
   homeDescription?: string;
   overview: string;
   overviewMedia: ProjectMedia;
+  cardMedia?: ImageMedia;
   period?: string;
   role?: string;
   team?: string;

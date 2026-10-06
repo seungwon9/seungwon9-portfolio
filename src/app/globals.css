@@ -319,6 +319,11 @@ video {
   background: #dfe4ea;
 }
 
+.project-cover-image {
+  object-fit: cover;
+  object-position: center;
+}
+
 .cover-browser {
   display: flex;
   gap: 0.35rem;
