@@ -112,8 +112,8 @@ export const projects: Project[] = [
     contributions: [
       {
         id: "manufacturing-erp-contribution-flow",
-        title: "업무 흐름과 기능 구조 설계",
-        summary: "현업의 Excel 업무를 확인하고 주문 → 생산 → 자재 → 재고 → 납품으로 이어지는 기능 구조를 정리했습니다.",
+        title: "업무 분석 및 구조화",
+        summary: "현업의 Excel 업무를 확인하고 주문 → 생산 → 자재 → 재고 → 납품으로 이어지는 전체 흐름과 기능 구조를 정리했습니다.",
         scope: "direct",
         media: [
           {
@@ -134,8 +134,8 @@ export const projects: Project[] = [
       },
       {
         id: "manufacturing-erp-contribution-master-data",
-        title: "기준정보 관리 기능 구현",
-        summary: "제품군, 제품규격, 자재, 제품별 자재구성의 CRUD와 활성·비활성 관리 기능을 구현했습니다.",
+        title: "기준정보·데이터 관계 설계 및 구현",
+        summary: "제품군, 제품규격, 자재, 제품별 자재구성의 관계를 설계하고 CRUD와 활성·비활성 관리 기능을 구현했습니다.",
         scope: "direct",
         media: [
           {
@@ -149,8 +149,8 @@ export const projects: Project[] = [
       },
       {
         id: "manufacturing-erp-contribution-validation",
-        title: "데이터 관계 검증 로직 구현",
-        summary: "활성 하위 데이터가 남아 있을 때 상위 기준정보의 상태 변경을 차단하도록 검증 규칙을 구현했습니다.",
+        title: "업무 규칙 및 데이터 정합성 검증 구현",
+        summary: "상위·하위 데이터 관계와 활성 상태를 확인해 잘못된 상태 변경을 차단하는 검증 규칙을 구현했습니다.",
         scope: "direct",
         media: [
           {

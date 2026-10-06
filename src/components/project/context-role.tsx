@@ -12,15 +12,17 @@ function ContentList({ items }: { items: string[] }) {
 }
 
 export function MyContribution({ project }: { project: Project }) {
+  const summaryOnly = project.slug === "manufacturing-erp";
+
   return (
     <section className="section project-section" id="contribution" aria-labelledby="contribution-title">
       <Container>
         <SectionHeading
           eyebrow="01 / Contribution"
           title="My Contribution"
-          description={project.overview}
+          description={summaryOnly ? undefined : project.overview}
         />
-        <div className="contribution-list">
+        <div className={`contribution-list${summaryOnly ? " contribution-list-summary" : ""}`}>
           {project.contributions.map((item) => (
             <article className="contribution-card" key={item.id}>
               <div className="contribution-copy">
@@ -30,7 +32,7 @@ export function MyContribution({ project }: { project: Project }) {
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
               </div>
-              {item.media?.length ? (
+              {!summaryOnly && item.media?.length ? (
                 <div className="contribution-media">
                   {item.media.map((media) => <MediaBlock media={media} key={media.id} />)}
                 </div>
@@ -38,16 +40,24 @@ export function MyContribution({ project }: { project: Project }) {
             </article>
           ))}
         </div>
-        <div className="contribution-scope">
-          <article>
-            <span className="content-label">직접 담당</span>
-            <ContentList items={project.responsibilities} />
-          </article>
-          <article>
-            <span className="content-label">협업 영역</span>
+        {summaryOnly && project.collaborationScope.length ? (
+          <div className="contribution-collaboration">
+            <span className="content-label">협업 범위</span>
             <ContentList items={project.collaborationScope} />
-          </article>
-        </div>
+          </div>
+        ) : null}
+        {!summaryOnly ? (
+          <div className="contribution-scope">
+            <article>
+              <span className="content-label">직접 담당</span>
+              <ContentList items={project.responsibilities} />
+            </article>
+            <article>
+              <span className="content-label">협업 영역</span>
+              <ContentList items={project.collaborationScope} />
+            </article>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

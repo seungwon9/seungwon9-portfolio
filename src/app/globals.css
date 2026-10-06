@@ -693,6 +693,24 @@ video {
   border-top: 1px solid var(--line-strong);
 }
 
+.contribution-list-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.contribution-list-summary .contribution-card {
+  display: block;
+  padding: 1.5rem 2rem 1.8rem 0;
+  border-top: 0;
+}
+
+.contribution-list-summary .contribution-card + .contribution-card {
+  padding-left: 2rem;
+  border-left: 1px solid var(--line);
+}
+
 .contribution-copy h3 {
   margin: 1rem 0 0.8rem;
   font-size: clamp(1.45rem, 2.6vw, 2.2rem);
@@ -748,6 +766,15 @@ video {
   border-left: 1px solid var(--line);
 }
 
+.contribution-collaboration {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.28fr) 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
 .content-label {
   color: var(--accent);
   font-size: 0.75rem;
@@ -755,6 +782,7 @@ video {
 }
 
 .contribution-scope ul,
+.contribution-collaboration ul,
 .case-story-copy ul,
 .evidence-list,
 .learnings-grid ul {
@@ -1229,6 +1257,10 @@ video {
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .project-meta { grid-template-columns: repeat(3, 1fr); }
   .contribution-card { grid-template-columns: 1fr; }
+  .contribution-list-summary { grid-template-columns: 1fr; }
+  .contribution-list-summary .contribution-card,
+  .contribution-list-summary .contribution-card + .contribution-card { padding: 1.5rem 0; border-left: 0; }
+  .contribution-list-summary .contribution-card + .contribution-card { border-top: 1px solid var(--line); }
   .case-story-grid { margin-left: 0; }
   .result-media-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1263,6 +1295,7 @@ video {
   .technology-scope-grid { grid-template-columns: 1fr; }
   .contribution-scope article + article,
   .technology-scope-grid article + article { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+  .contribution-collaboration { grid-template-columns: 1fr; gap: 0.5rem; }
   .technology-scope-grid article + article { border-top-color: rgba(255, 255, 255, 0.2); }
   .case-story-step { min-height: 0; }
   .case-media-grid,
