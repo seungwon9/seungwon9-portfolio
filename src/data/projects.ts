@@ -66,6 +66,13 @@ const placeholderCases = (slug: string): ProblemSolvingCase[] => [
   },
 ];
 
+const placeholderContribution = (slug: string) => ({
+  id: `${slug}-contribution-placeholder`,
+  title: "기여 내용 준비 중",
+  summary: "직접 담당한 기능과 협업 범위를 실제 화면 또는 구조도와 함께 정리할 예정입니다.",
+  media: [placeholderMedia(`${slug}-contribution-media`, "기여 화면 또는 구조도")],
+});
+
 export const projects: Project[] = [
   {
     slug: "manufacturing-erp",
@@ -75,6 +82,13 @@ export const projects: Project[] = [
     eyebrow: "Featured Project 01",
     shortDescription: "Excel로 분산 관리되던 제조 업무를 하나의 데이터 흐름과 시스템 구조로 정리한 프로젝트입니다.",
     overview: "실제 데크 제조업체의 Excel 기반 업무를 확인하고, 주문부터 납품까지 이어지는 흐름과 기준정보의 관계를 시스템 구조로 정리했습니다.",
+    overviewMedia: {
+      id: "manufacturing-erp-overview",
+      type: "image",
+      title: "ERP 전체 업무 화면",
+      alt: "제조업체 ERP의 전체 업무 화면이 들어갈 자리",
+      caption: "실제 ERP 화면이 준비되면 주문부터 납품까지의 업무 구성을 보여주는 대표 화면을 배치합니다.",
+    },
     period: "내용 준비 중",
     role: "요구사항 확인 · 업무 구조 설계 · 개발",
     team: "현업 담당자와 업무 방식 및 요구사항 확인",
@@ -95,6 +109,70 @@ export const projects: Project[] = [
     collaborationScope: [
       "제조업체 대표 및 관리 담당자와 현재 업무 방식과 요구사항을 확인하며 개발을 진행하고 있습니다.",
     ],
+    contributions: [
+      {
+        id: "manufacturing-erp-contribution-flow",
+        title: "업무 흐름과 기능 구조 설계",
+        summary: "현업의 Excel 업무를 확인하고 주문 → 생산 → 자재 → 재고 → 납품으로 이어지는 기능 구조를 정리했습니다.",
+        scope: "direct",
+        media: [
+          {
+            id: "manufacturing-erp-contribution-flow-diagram",
+            type: "diagram",
+            title: "핵심 업무 흐름",
+            alt: "주문, 생산, 자재, 재고, 납품이 연결되는 업무 흐름",
+            nodes: [
+              { label: "주문" },
+              { label: "생산" },
+              { label: "자재" },
+              { label: "재고" },
+              { label: "납품" },
+            ],
+            caption: "현업 확인을 바탕으로 정리한 ERP의 핵심 업무 흐름",
+          },
+        ],
+      },
+      {
+        id: "manufacturing-erp-contribution-master-data",
+        title: "기준정보 관리 기능 구현",
+        summary: "제품군, 제품규격, 자재, 제품별 자재구성의 CRUD와 활성·비활성 관리 기능을 구현했습니다.",
+        scope: "direct",
+        media: [
+          {
+            id: "manufacturing-erp-contribution-master-data-screen",
+            type: "image",
+            title: "기준정보 관리 화면",
+            alt: "실제 기준정보 관리 화면이 들어갈 자리",
+            caption: "실제 화면 준비 중 · 제품군과 제품규격의 관계 및 상태를 확인할 수 있는 화면 권장",
+          },
+        ],
+      },
+      {
+        id: "manufacturing-erp-contribution-validation",
+        title: "데이터 관계 검증 로직 구현",
+        summary: "활성 하위 데이터가 남아 있을 때 상위 기준정보의 상태 변경을 차단하도록 검증 규칙을 구현했습니다.",
+        scope: "direct",
+        media: [
+          {
+            id: "manufacturing-erp-contribution-validation-flow",
+            type: "diagram",
+            title: "상태 변경 검증",
+            alt: "상위 기준정보 변경 전 활성 하위 데이터를 검사하는 흐름",
+            nodes: [
+              { label: "상태 변경 요청" },
+              { label: "활성 하위 데이터 확인", tone: "decision" },
+              { label: "존재하면 차단", tone: "blocked" },
+              { label: "정리 후 변경", tone: "success" },
+            ],
+            caption: "상하위 관계를 확인한 뒤 상태 변경을 허용하는 검증 흐름",
+          },
+        ],
+      },
+    ],
+    technologyScope: {
+      direct: ["React", "TypeScript", "Electron"],
+      collaboration: [],
+    },
     problemSolvingCases: [
       {
         id: "manufacturing-erp-case-01",
@@ -256,6 +334,7 @@ export const projects: Project[] = [
     eyebrow: "Featured Project 02",
     shortDescription: "기획을 게임 로직으로 구현하고 개발·검증 방식을 개선한 경험을 정리하는 프로젝트입니다.",
     overview: "게임 로직 구현과 개발·검증 방식의 개선 과정을 중심으로 실제 수행 내용을 정리할 예정입니다.",
+    overviewMedia: placeholderMedia("cognitive-training-games-overview", "인지훈련 게임 대표 화면"),
     period: "내용 준비 중",
     role: "내용 준비 중",
     team: "내용 준비 중",
@@ -266,6 +345,8 @@ export const projects: Project[] = [
     context: ["프로젝트 배경과 기획 맥락을 정리할 예정입니다."],
     responsibilities: ["직접 담당한 게임과 개발 범위를 정리할 예정입니다."],
     collaborationScope: ["기획 및 검증 협업 범위를 정리할 예정입니다."],
+    contributions: [placeholderContribution("cognitive-training-games")],
+    technologyScope: { direct: [], collaboration: [] },
     problemSolvingCases: placeholderCases("cognitive-training-games"),
     resultAndDemo: {
       summary: "확인 가능한 결과와 게임 화면을 준비 중입니다.",
@@ -289,6 +370,7 @@ export const projects: Project[] = [
     eyebrow: "Featured Project 03",
     shortDescription: "서비스 흐름을 기획하고 AI 분석 Backend를 사용자 경험으로 연결한 경험을 정리하는 프로젝트입니다.",
     overview: "서비스 흐름의 기획부터 AI 분석 Backend와 사용자 경험의 연결까지 실제 수행 내용을 정리할 예정입니다.",
+    overviewMedia: placeholderMedia("catchvoca-overview", "CatchVoca 대표 화면"),
     period: "내용 준비 중",
     role: "내용 준비 중",
     team: "내용 준비 중",
@@ -299,6 +381,8 @@ export const projects: Project[] = [
     context: ["서비스를 시작한 배경과 사용자 문제를 정리할 예정입니다."],
     responsibilities: ["직접 기획하고 구현한 범위를 정리할 예정입니다."],
     collaborationScope: ["팀 구성과 협업 범위를 정리할 예정입니다."],
+    contributions: [placeholderContribution("catchvoca")],
+    technologyScope: { direct: [], collaboration: [] },
     problemSolvingCases: placeholderCases("catchvoca"),
     resultAndDemo: {
       summary: "확인 가능한 결과와 서비스 화면을 준비 중입니다.",

@@ -9,8 +9,8 @@ export function ProblemSolvingCases({ cases }: { cases: ProblemSolvingCase[] }) 
       <Container>
         <SectionHeading
           eyebrow="02 / Case Studies"
-          title="Problem Solving Cases"
-          description="각 사례는 문제에서 시작해 판단, 구현, 근거와 결과로 이어집니다. 현재 내용은 실제 사례 정리를 위한 placeholder입니다."
+          title="Problem Solving"
+          description="가장 중요한 문제를 상황, 판단, 구현, 근거의 흐름으로 압축했습니다. 확인된 내용만 남기고 근거가 없는 단계는 생략합니다."
         />
         <div className="cases-list">
           {cases.map((item, index) => <CaseStudy item={item} index={index} key={item.id} />)}

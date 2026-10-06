@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ContextRole } from "@/components/project/context-role";
-import { Learnings } from "@/components/project/learnings";
+import { MyContribution } from "@/components/project/context-role";
+import { TechLearnings } from "@/components/project/learnings";
 import { ProblemSolvingCases } from "@/components/project/problem-solving-cases";
 import { ProjectNavigation } from "@/components/project/project-navigation";
 import { ProjectOverview } from "@/components/project/project-overview";
@@ -39,10 +39,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <>
       <ProjectOverview project={project} />
-      <ContextRole project={project} />
+      <MyContribution project={project} />
       <ProblemSolvingCases cases={project.problemSolvingCases} />
       <ResultDemo project={project} />
-      <Learnings project={project} />
+      <TechLearnings project={project} />
       <ProjectNavigation previous={previous} next={next} />
     </>
   );

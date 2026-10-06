@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { MediaBlock } from "@/components/media/media-block";
 import { Container } from "@/components/ui/container";
 import type { Project } from "@/types/project";
 
 const labels = [
   ["기간", "period"],
   ["역할", "role"],
-  ["사용자", "users"],
+  ["협업", "team"],
   ["기술", "technologies"],
   ["상태", "projectStatus"],
 ] as const;
@@ -23,22 +24,14 @@ export function ProjectOverview({ project }: { project: Project }) {
           </div>
           <nav className="case-toc" aria-label="페이지 목차">
             <span>On this page</span>
-            <a href="#context">Context & My Role</a>
-            <a href="#cases">Problem Solving Cases</a>
+            <a href="#contribution">My Contribution</a>
+            <a href="#cases">Problem Solving</a>
             <a href="#result">Result & Demo</a>
-            <a href="#learnings">What I Learned</a>
+            <a href="#tech-learnings">Tech & Learnings</a>
           </nav>
         </div>
-        <div className={`project-hero-visual project-visual-${project.featuredOrder}`}>
-          <span className="visual-label">Project visual</span>
-          <div className="visual-frame" aria-label="대표 프로젝트 화면 준비 중" role="img">
-            <div className="visual-sidebar" aria-hidden="true"><i /><i /><i /><i /></div>
-            <div className="visual-main" aria-hidden="true">
-              <i className="visual-title" /><i className="visual-copy" />
-              <div><i /><i /><i /></div>
-            </div>
-          </div>
-          <span className="visual-status">실제 대표 화면 준비 중</span>
+        <div className="project-overview-media">
+          <MediaBlock media={project.overviewMedia} />
         </div>
         <dl className="project-meta">
           {labels.map(([label, key]) => {

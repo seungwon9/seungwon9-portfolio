@@ -68,6 +68,14 @@ export type ProblemSolvingCase = {
   media?: ProjectMedia[];
 };
 
+export type ContributionItem = {
+  id: string;
+  title: string;
+  summary: string;
+  scope?: "direct" | "collaboration";
+  media?: ProjectMedia[];
+};
+
 export type Project = {
   slug: string;
   publicationStatus: PublicationStatus;
@@ -76,6 +84,7 @@ export type Project = {
   eyebrow: string;
   shortDescription: string;
   overview: string;
+  overviewMedia: ProjectMedia;
   period?: string;
   role?: string;
   team?: string;
@@ -86,6 +95,11 @@ export type Project = {
   context: string[];
   responsibilities: string[];
   collaborationScope: string[];
+  contributions: ContributionItem[];
+  technologyScope: {
+    direct: string[];
+    collaboration: string[];
+  };
   problemSolvingCases: ProblemSolvingCase[];
   resultAndDemo: {
     summary: string;

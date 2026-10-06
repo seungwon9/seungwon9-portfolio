@@ -6,8 +6,8 @@ const steps: Array<{
   label: string;
   dataKey: keyof Pick<ProblemSolvingCase, "problem" | "decision" | "implementation" | "evidenceResult">;
 }> = [
-  { key: "problem", label: "Problem", dataKey: "problem" },
-  { key: "decision", label: "Decision", dataKey: "decision" },
+  { key: "problem", label: "Situation / Problem", dataKey: "problem" },
+  { key: "decision", label: "Decision / Solution", dataKey: "decision" },
   { key: "implementation", label: "Implementation", dataKey: "implementation" },
   { key: "evidenceResult", label: "Evidence / Result", dataKey: "evidenceResult" },
 ];
@@ -32,24 +32,21 @@ export function CaseStudy({ item, index }: { item: ProblemSolvingCase; index: nu
         <span>Case {String(index + 1).padStart(2, "0")}</span>
         <h3>{item.title}</h3>
       </header>
-      <div className="case-flow">
-        {steps.map((step, stepIndex) => {
+      <div className="case-story-grid">
+        {steps.map((step) => {
           const content = item[step.dataKey] as CaseContent | undefined;
           const stageMedia = item.media?.filter((media) => media.placement === step.key) ?? [];
 
           if (!content) return null;
 
           return (
-            <div className="case-step" key={step.key}>
-              <div className="case-step-marker" aria-hidden="true">
-                <span>{String(stepIndex + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="case-step-copy">
-                <h4>{step.label}</h4>
+            <section className="case-story-step" key={step.key}>
+              <span className="case-story-label">{step.label}</span>
+              <div className="case-story-copy">
                 <StepContent content={content} />
                 {stageMedia.map((media) => <MediaBlock media={media} key={media.id} />)}
               </div>
-            </div>
+            </section>
           );
         })}
       </div>
