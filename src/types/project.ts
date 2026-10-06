@@ -36,11 +36,13 @@ export type BeforeAfterMedia = MediaBase & {
 
 export type DiagramMedia = MediaBase & {
   type: "diagram" | "mermaid";
+  layout?: "flow" | "cards";
   src?: string;
   alt: string;
   description?: string;
   nodes?: Array<{
     label: string;
+    description?: string;
     tone?: "default" | "decision" | "blocked" | "success";
   }>;
   width?: number;
@@ -89,6 +91,7 @@ export type Project = {
   role?: string;
   team?: string;
   users?: string;
+  domain?: string;
   projectStatus?: string;
   technologies: string[];
   keywords: string[];

@@ -332,34 +332,191 @@ export const projects: Project[] = [
     featuredOrder: 2,
     title: "인지훈련 게임 20종",
     eyebrow: "Featured Project 02",
-    shortDescription: "기획을 게임 로직으로 구현하고 개발·검증 방식을 개선한 경험을 정리하는 프로젝트입니다.",
-    overview: "게임 로직 구현과 개발·검증 방식의 개선 과정을 중심으로 실제 수행 내용을 정리할 예정입니다.",
-    overviewMedia: placeholderMedia("cognitive-training-games-overview", "인지훈련 게임 대표 화면"),
+    shortDescription: "20종의 인지훈련 게임을 구현하고, 반복되는 개발·검증 과정까지 웹 기반으로 개선했습니다.",
+    overview: "의료연구원의 기획서를 게임 로직으로 구현하고, 브라우저에서 수정 결과를 바로 확인할 수 있는 웹 개발 구조를 도입했습니다.",
+    overviewMedia: placeholderMedia("cognitive-training-games-overview", "인지훈련 게임 20종 전체 화면"),
     period: "내용 준비 중",
-    role: "내용 준비 중",
-    team: "내용 준비 중",
+    role: "게임 로직 설계 및 Frontend/Game 개발",
+    team: "의료연구원 · 디자이너",
     users: "내용 준비 중",
     projectStatus: "내용 준비 중",
-    technologies: [],
-    keywords: ["게임 로직", "상호작용", "개발·검증"],
-    context: ["프로젝트 배경과 기획 맥락을 정리할 예정입니다."],
-    responsibilities: ["직접 담당한 게임과 개발 범위를 정리할 예정입니다."],
-    collaborationScope: ["기획 및 검증 협업 범위를 정리할 예정입니다."],
-    contributions: [placeholderContribution("cognitive-training-games")],
-    technologyScope: { direct: [], collaboration: [] },
-    problemSolvingCases: placeholderCases("cognitive-training-games"),
+    domain: "디지털헬스케어 / 인지훈련",
+    technologies: ["React", "Next.js", "TypeScript", "Phaser3"],
+    keywords: ["게임 로직", "웹 기반 검증", "재사용 구조"],
+    context: [
+      "디지털헬스케어 스타트업에서 의료연구원의 기획서를 바탕으로 인지훈련 콘텐츠를 개발했습니다.",
+      "Unity 기반 개발에서 반복되던 전달·설치 과정을 줄이기 위해 React와 Phaser3를 활용한 웹 방식을 도입했습니다.",
+    ],
+    responsibilities: [
+      "인지훈련 게임 20종의 규칙과 흐름을 분석하고 게임 로직을 설계·구현했습니다.",
+      "React/Next.js와 Phaser3의 역할을 구분한 웹 게임 실행 구조를 구성했습니다.",
+      "반복되는 게임 실행 구조와 UI를 재사용 가능한 형태로 정리했습니다.",
+    ],
+    collaborationScope: [
+      "의료연구원과 게임 규칙 및 검증 내용을 확인하고, 디자이너와 화면 구성을 협업했습니다.",
+    ],
+    contributions: [
+      {
+        id: "cognitive-training-games-contribution-logic",
+        title: "게임 로직 설계 및 구현",
+        summary: "기획서를 분석하고 각 게임의 상태, 입력, 판정, 난이도 흐름을 실제 게임 로직으로 구현했습니다.",
+        scope: "direct",
+      },
+      {
+        id: "cognitive-training-games-contribution-structure",
+        title: "웹 게임 개발 구조",
+        summary: "React/Next.js와 Phaser3의 역할을 나눠 게임 진입부터 실행, 상태와 결과 전달까지 이어지는 구조를 구성했습니다.",
+        scope: "direct",
+      },
+      {
+        id: "cognitive-training-games-contribution-validation",
+        title: "개발·검증 방식 개선",
+        summary: "Unity 기반 전달·설치 방식에서 수정 결과를 브라우저로 바로 확인할 수 있는 웹 방식으로 전환했습니다.",
+        scope: "direct",
+      },
+    ],
+    technologyScope: {
+      direct: ["React", "Next.js", "TypeScript", "Phaser3"],
+      collaboration: [],
+    },
+    problemSolvingCases: [
+      {
+        id: "cognitive-training-games-case-01",
+        title: "기획서를 실제 게임 로직으로 변환",
+        problem: {
+          summary: "의료연구원의 기획서는 게임의 목적과 규칙을 설명하지만, 프로그램에서 사용할 상태와 입력·판정 구조는 별도로 정의해야 했습니다.",
+        },
+        decision: {
+          summary: "기획 의도를 바로 화면으로 옮기기보다 규칙과 조건을 나누고, 게임의 상태와 사용자 입력, 정답 판정 흐름을 먼저 정의했습니다.",
+        },
+        implementation: {
+          summary: "정리한 흐름을 바탕으로 각 게임의 진행 상태, 입력 처리, 판정과 결과 전달 로직을 직접 설계·구현했습니다.",
+        },
+        evidenceResult: {
+          summary: "이 과정을 반복해 인지훈련 게임 20종의 서로 다른 규칙과 흐름을 실제 동작하는 게임 로직으로 구현했습니다.",
+        },
+        media: [
+          {
+            id: "cognitive-training-games-plan-to-logic-flow",
+            type: "diagram",
+            title: "기획서에서 게임 로직까지",
+            alt: "기획서 이해부터 결과 전달까지 이어지는 게임 로직 설계 흐름",
+            nodes: [
+              { label: "기획서 이해" },
+              { label: "규칙·조건 정리" },
+              { label: "상태 정의", tone: "decision" },
+              { label: "사용자 입력" },
+              { label: "정답 판정", tone: "decision" },
+              { label: "결과 전달", tone: "success" },
+            ],
+            caption: "기획 의도를 실행 가능한 상태와 입력·판정 구조로 구체화한 흐름입니다.",
+          },
+        ],
+      },
+      {
+        id: "cognitive-training-games-case-02",
+        title: "반복되는 Unity 검증 과정을 웹 기반으로 개선",
+        problem: {
+          summary: "초기 Unity 방식에서는 수정 내용을 확인할 때마다 Build, 파일 전달, 설치, 연구원 확인 과정을 반복해야 했습니다.",
+        },
+        decision: {
+          summary: "수정 결과를 브라우저에서 바로 확인할 수 있도록 Phaser3를 새로 학습하고 React와 결합한 웹 개발 방식을 제안했습니다.",
+        },
+        implementation: {
+          summary: "게임 실행은 Phaser3가 담당하고, React/Next.js가 게임 진입과 설정·상태·결과 전달을 담당하도록 웹 구조를 구성했습니다.",
+        },
+        evidenceResult: {
+          summary: "이후에는 수정 내용을 웹에 반영한 뒤 의료연구원이 브라우저에서 확인하고 피드백할 수 있는 방식으로 검증 흐름을 바꿨습니다.",
+        },
+        media: [
+          {
+            id: "cognitive-training-games-validation-before-after",
+            type: "before-after",
+            title: "게임 수정 결과 확인 방식 개선",
+            before: {
+              label: "Before",
+              description: "Unity 기반 파일 전달과 설치를 거치는 확인 과정",
+              items: ["개발", "Build", "파일 전달", "설치", "연구원 확인"],
+            },
+            after: {
+              label: "After",
+              description: "브라우저에서 수정 결과를 바로 확인하는 과정",
+              items: ["개발", "웹 반영", "바로 확인", "피드백"],
+            },
+            caption: "확인되지 않은 단축 수치 대신 실제로 변경한 검증 절차만 표시했습니다.",
+          },
+        ],
+      },
+      {
+        id: "cognitive-training-games-case-03",
+        title: "서로 다른 20개 게임을 하나의 실행 구조에서 관리",
+        problem: {
+          summary: "게임마다 규칙과 상호작용은 달랐지만, 진입과 설정 전달, 실행, 상태와 결과 처리처럼 반복되는 구조도 함께 존재했습니다.",
+        },
+        decision: {
+          summary: "React/Next.js는 외부 흐름과 상태 전달을, Phaser3는 Scene과 입력, Timer, Tween, Physics, 게임 규칙과 판정을 담당하도록 역할을 구분했습니다.",
+        },
+        implementation: {
+          summary: "공통 GameLoader를 중심으로 게임 진입과 옵션 전달, Phaser Scene 실행, 결과 반환이 이어지도록 구성하고 반복되는 실행 구조와 UI를 재사용했습니다.",
+        },
+        evidenceResult: {
+          summary: "같은 실행 구조 안에서 서로 다른 인지 과제를 구현했으며, 대표적으로 Train Manager, Remember Blocks, Touch Animal Cards가 있습니다.",
+        },
+        media: [
+          {
+            id: "cognitive-training-games-runtime-architecture",
+            type: "diagram",
+            title: "React와 Phaser3의 실행 구조",
+            placement: "implementation",
+            alt: "Route와 Options에서 외부 앱 결과 전달까지 이어지는 웹 게임 실행 구조",
+            nodes: [
+              { label: "Route / Options" },
+              { label: "GameLoader" },
+              { label: "Phaser Scene", tone: "decision" },
+              { label: "Input / Game Logic" },
+              { label: "State / Result", tone: "decision" },
+              { label: "React / External App", tone: "success" },
+            ],
+            caption: "웹 애플리케이션 흐름과 실제 게임 실행 영역의 역할을 나눈 구조입니다.",
+          },
+          {
+            id: "cognitive-training-games-examples",
+            type: "diagram",
+            layout: "cards",
+            title: "대표 게임 로직 비교",
+            alt: "Train Manager, Remember Blocks, Touch Animal Cards의 게임 로직 비교",
+            nodes: [
+              { label: "Train Manager", description: "이동·신호·충돌 등 실시간 게임 로직" },
+              { label: "Remember Blocks", description: "기억 단계 → 재구성 → 정답 비교" },
+              { label: "Touch Animal Cards", description: "조건에 따라 반응 여부를 판단하는 인지 과제" },
+            ],
+            caption: "게임별 세부 규칙은 다르지만 공통 실행 구조 안에서 동작하도록 구성했습니다.",
+          },
+        ],
+      },
+    ],
     resultAndDemo: {
-      summary: "확인 가능한 결과와 게임 화면을 준비 중입니다.",
-      evidence: [],
+      summary: "인지훈련 게임 20종의 로직을 구현하고, 수정 결과를 브라우저에서 확인할 수 있는 웹 기반 개발·검증 구조를 구성했습니다.",
+      evidence: [
+        "의료연구원의 기획서를 바탕으로 인지훈련 게임 20종의 게임 로직 설계 및 구현",
+        "React/Next.js와 Phaser3의 역할을 구분한 웹 게임 실행 및 결과 전달 구조 구성",
+        "반복되는 게임 실행 구조와 UI를 재사용 가능한 형태로 구성",
+      ],
       media: [
-        placeholderMedia("cognitive-training-games-result-screen", "게임 화면"),
-        placeholderMedia("cognitive-training-games-result-video", "플레이 흐름", "video"),
+        placeholderMedia("cognitive-training-games-launcher", "20종 게임 런처 전체 화면"),
+        placeholderMedia("cognitive-training-games-train-manager", "Train Manager 플레이", "video"),
+        placeholderMedia("cognitive-training-games-remember-blocks", "Remember Blocks 기억·재구성 화면"),
+        placeholderMedia("cognitive-training-games-touch-animal-cards", "Touch Animal Cards 화면"),
+        placeholderMedia("cognitive-training-games-sacogtest", "통합 인지검사 sacogtest 화면"),
       ],
     },
-    learnings: [],
+    learnings: [
+      "기술 선택은 기술 자체보다 개발과 검증 과정 전체를 개선할 수 있는지를 기준으로 판단해야 한다는 점을 배웠습니다.",
+      "서로 다른 콘텐츠에서도 반복되는 실행 구조와 UI는 공통화할 수 있다는 점을 확인했습니다.",
+    ],
     seo: {
       title: "인지훈련 게임 20종",
-      description: "인지훈련 게임 프로젝트 사례를 정리하는 페이지입니다.",
+      description: "인지훈련 게임 20종의 로직을 구현하고 반복되는 개발·검증 과정을 웹 기반으로 개선한 프로젝트입니다.",
     },
   },
   {

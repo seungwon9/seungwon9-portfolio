@@ -82,10 +82,11 @@ export function MediaBlock({ media }: { media: ProjectMedia }) {
           <h5>{media.title}</h5>
           {media.description ? <p>{media.description}</p> : null}
         </div>
-        <ol className="diagram-flow" aria-label={media.alt}>
+        <ol className={`diagram-flow diagram-flow-${media.layout ?? "flow"}`} aria-label={media.alt}>
           {media.nodes.map((node) => (
             <li className={`diagram-node diagram-node-${node.tone ?? "default"}`} key={node.label}>
-              {node.label}
+              <strong>{node.label}</strong>
+              {node.description ? <span>{node.description}</span> : null}
             </li>
           ))}
         </ol>

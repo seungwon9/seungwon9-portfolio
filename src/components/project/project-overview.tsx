@@ -8,6 +8,7 @@ const labels = [
   ["역할", "role"],
   ["협업", "team"],
   ["기술", "technologies"],
+  ["분야", "domain"],
   ["상태", "projectStatus"],
 ] as const;
 
@@ -36,6 +37,7 @@ export function ProjectOverview({ project }: { project: Project }) {
         <dl className="project-meta">
           {labels.map(([label, key]) => {
             const rawValue = project[key];
+            if (key === "domain" && !rawValue) return null;
             const value = Array.isArray(rawValue)
               ? rawValue.length > 0 ? rawValue.join(", ") : "내용 준비 중"
               : rawValue ?? "내용 준비 중";

@@ -863,6 +863,8 @@ video {
   margin-top: 2rem;
 }
 
+.case-media-grid > :only-child { grid-column: 1 / -1; }
+
 .result-media-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1087,6 +1089,17 @@ video {
   word-break: keep-all;
 }
 
+.diagram-node strong { font: inherit; }
+
+.diagram-node span {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
 .diagram-node:not(:last-child)::after {
   position: absolute;
   top: 50%;
@@ -1111,6 +1124,19 @@ video {
   border-color: #718f7e;
   background: #e2ece6;
 }
+
+.diagram-flow-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.diagram-flow-cards .diagram-node {
+  min-height: 160px;
+  align-content: start;
+  justify-items: start;
+  text-align: left;
+}
+
+.diagram-flow-cards .diagram-node::after { display: none; }
 
 .empty-note {
   margin: -2rem 0 3rem;
@@ -1313,6 +1339,7 @@ video {
   }
   .diagram-heading { grid-template-columns: 1fr; }
   .diagram-flow { grid-template-columns: 1fr; }
+  .diagram-flow-cards { grid-template-columns: 1fr; }
   .diagram-node { min-height: 70px; }
   .diagram-node:not(:last-child)::after {
     top: auto;

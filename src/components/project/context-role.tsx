@@ -12,7 +12,7 @@ function ContentList({ items }: { items: string[] }) {
 }
 
 export function MyContribution({ project }: { project: Project }) {
-  const summaryOnly = project.slug === "manufacturing-erp";
+  const summaryOnly = project.contributions.length > 1;
 
   return (
     <section className="section project-section" id="contribution" aria-labelledby="contribution-title">
