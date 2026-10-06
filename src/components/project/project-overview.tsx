@@ -32,7 +32,7 @@ export function ProjectOverview({ project }: { project: Project }) {
           </nav>
         </div>
         <div className="project-overview-media">
-          <MediaBlock media={project.overviewMedia} />
+          <MediaBlock media={project.overviewMedia} eager />
         </div>
         <dl className="project-meta">
           {labels.map(([label, key]) => {

@@ -6,7 +6,15 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="project-card">
       <Link href={`/projects/${project.slug}`} className="project-card-link">
-        <div className={`project-cover project-cover-${project.featuredOrder}`}>
+        <div
+          className={`project-cover project-cover-${project.featuredOrder}`}
+          style={project.cardMedia?.src
+            ? {
+                aspectRatio: `${project.cardMedia.width ?? 16} / ${project.cardMedia.height ?? 9}`,
+                minHeight: 0,
+              }
+            : undefined}
+        >
           {project.cardMedia?.src ? (
             <Image
               className="project-cover-image"

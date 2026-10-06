@@ -32,7 +32,7 @@ function TextFlow({
   );
 }
 
-export function MediaBlock({ media }: { media: ProjectMedia }) {
+export function MediaBlock({ media, eager = false }: { media: ProjectMedia; eager?: boolean }) {
   if (media.type === "before-after") {
     return (
       <figure className="media-figure">
@@ -103,6 +103,7 @@ export function MediaBlock({ media }: { media: ProjectMedia }) {
           alt={media.alt}
           width={media.width ?? 1440}
           height={media.height ?? 900}
+          loading={eager ? "eager" : "lazy"}
         />
       ) : (
         <Placeholder type={media.type.toUpperCase()} title={media.title} />
