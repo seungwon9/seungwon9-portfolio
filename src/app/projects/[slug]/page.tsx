@@ -40,7 +40,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <ProjectOverview project={project} />
       <MyContribution project={project} />
-      <ProblemSolvingCases cases={project.problemSolvingCases} />
+      <ProblemSolvingCases
+        cases={project.problemSolvingCases}
+        operationalDecisions={project.operationalDecisions}
+      />
       <ResultDemo project={project} />
       <TechLearnings project={project} />
       <ProjectNavigation previous={previous} next={next} />

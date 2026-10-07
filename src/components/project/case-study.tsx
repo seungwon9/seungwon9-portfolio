@@ -41,7 +41,7 @@ export function CaseStudy({ item, index }: { item: ProblemSolvingCase; index: nu
 
           return (
             <section className="case-story-step" key={step.key}>
-              <span className="case-story-label">{step.label}</span>
+              <span className="case-story-label">{item.labels?.[step.key] ?? step.label}</span>
               <div className="case-story-copy">
                 <StepContent content={content} />
                 {stageMedia.map((media) => <MediaBlock media={media} key={media.id} />)}
@@ -51,7 +51,7 @@ export function CaseStudy({ item, index }: { item: ProblemSolvingCase; index: nu
         })}
       </div>
       {unplacedMedia.length ? (
-        <div className="case-media-grid">
+        <div className={`case-media-grid case-media-${item.mediaLayout ?? "grid"}`}>
           {unplacedMedia.map((media) => <MediaBlock media={media} key={media.id} />)}
         </div>
       ) : null}

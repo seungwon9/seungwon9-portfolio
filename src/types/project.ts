@@ -63,6 +63,8 @@ export type CaseContent = {
 export type ProblemSolvingCase = {
   id: string;
   title: string;
+  labels?: Partial<Record<CaseStage, string>>;
+  mediaLayout?: "grid" | "sequence" | "stack";
   problem: CaseContent;
   decision?: CaseContent;
   implementation?: CaseContent;
@@ -106,6 +108,14 @@ export type Project = {
     collaboration: string[];
   };
   problemSolvingCases: ProblemSolvingCase[];
+  operationalDecisions?: {
+    title: string;
+    description?: string;
+    items: Array<{
+      title: string;
+      summary: string;
+    }>;
+  };
   resultAndDemo: {
     summary: string;
     evidence: string[];
