@@ -1,40 +1,4 @@
-import type { Project, ProjectMedia } from "@/types/project";
-
-const placeholderMedia = (
-  id: string,
-  title: string,
-  type: ProjectMedia["type"] = "image",
-): ProjectMedia => {
-  if (type === "video") {
-    return {
-      id,
-      type,
-      title,
-      description: "실제 동작 영상이 준비되면 이 영역에 추가합니다.",
-      caption: "영상 자료 준비 중",
-    };
-  }
-
-  if (type === "before-after") {
-    return {
-      id,
-      type,
-      title,
-      before: { label: "Before", description: "기존 흐름 자료 준비 중" },
-      after: { label: "After", description: "개선 흐름 자료 준비 중" },
-      caption: "비교 자료 준비 중",
-    };
-  }
-
-  return {
-    id,
-    type,
-    title,
-    alt: "프로젝트 시각 자료가 들어갈 자리",
-    description: type === "diagram" || type === "mermaid" ? "구조도 자료 준비 중" : undefined,
-    caption: "실제 화면 또는 구조도 준비 중",
-  };
-};
+import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
@@ -605,12 +569,24 @@ export const projects: Project[] = [
     shortDescription: "학습 자료를 입력하면 AI 분석 결과를 단어장으로 연결하고, 생성된 단어를 실제 학습에 활용할 수 있도록 사용자 흐름을 구현했습니다.",
     homeDescription: "AI 분석 Backend를 Flutter 사용자 흐름과 연결한 단어장 서비스를 기획하고 Frontend를 개발했습니다.",
     overview: "직접 기획한 AI 기반 단어장 서비스로, 분석 Backend의 결과를 입력부터 단어장 생성과 관리까지 이어지는 사용자 경험으로 연결했습니다.",
-    overviewMedia: placeholderMedia("catchvoca-overview", "CatchVoca 메인 입력 화면"),
+    overviewMedia: {
+      id: "catchvoca-overview",
+      type: "image",
+      title: "CatchVoca 단어장 상세 화면",
+      src: "/projects/catchvoca/images/catchvoca-word-detail.webp",
+      alt: "단어의 뜻, 품사, 예문, 번역, 동의어와 반의어가 보이는 CatchVoca 단어장 상세 화면",
+      width: 1920,
+      height: 950,
+      caption: "생성된 단어를 뜻과 품사, 예문, 번역, 동의어·반의어와 함께 확인하는 상세 화면입니다.",
+    },
     cardMedia: {
       id: "catchvoca-card",
       type: "image",
       title: "CatchVoca 대표 화면",
+      src: "/projects/catchvoca/images/catchvoca-word-detail.webp",
       alt: "생성된 단어와 학습정보가 보이는 CatchVoca 단어장 화면",
+      width: 1920,
+      height: 950,
     },
     period: "내용 준비 중",
     role: "서비스 기획 · Flutter Frontend 개발",
@@ -676,6 +652,7 @@ export const projects: Project[] = [
           {
             id: "catchvoca-material-to-wordbook-flow",
             type: "before-after",
+            placement: "decision",
             title: "직접 입력에서 자료 기반 단어장 생성으로",
             before: {
               label: "Before",
@@ -688,6 +665,36 @@ export const projects: Project[] = [
               items: ["텍스트 / 파일 / URL", "분석 요청", "단어장"],
             },
             caption: "AI 내부 구현이 아닌 자료 입력부터 단어장까지의 서비스 흐름을 비교했습니다.",
+          },
+          {
+            id: "catchvoca-input-file",
+            type: "image",
+            title: "PDF·이미지 입력",
+            src: "/projects/catchvoca/images/catchvoca-input-file.webp",
+            alt: "PDF 또는 이미지 파일을 선택해 분석 요청할 수 있는 CatchVoca 입력 화면",
+            width: 1919,
+            height: 953,
+            caption: "PDF·이미지 파일을 선택해 분석 요청으로 연결하는 입력 화면입니다.",
+          },
+          {
+            id: "catchvoca-input-text",
+            type: "image",
+            title: "텍스트 입력",
+            src: "/projects/catchvoca/images/catchvoca-input-text.webp",
+            alt: "텍스트와 언어를 선택해 분석 요청할 수 있는 CatchVoca 입력 화면",
+            width: 1919,
+            height: 953,
+            caption: "직접 입력한 텍스트와 선택한 언어를 분석 요청으로 전달하는 화면입니다.",
+          },
+          {
+            id: "catchvoca-input-url",
+            type: "image",
+            title: "URL 입력",
+            src: "/projects/catchvoca/images/catchvoca-input-url.webp",
+            alt: "웹페이지 URL과 언어를 선택해 분석 요청할 수 있는 CatchVoca 입력 화면",
+            width: 1919,
+            height: 952,
+            caption: "웹페이지 URL을 입력해 같은 단어장 생성 흐름으로 연결하는 화면입니다.",
           },
         ],
       },
@@ -742,6 +749,7 @@ export const projects: Project[] = [
           {
             id: "catchvoca-wordbook-management-flow",
             type: "diagram",
+            placement: "implementation",
             title: "생성된 단어장의 학습·관리 흐름",
             alt: "단어장 조회부터 상세 정보와 다중 선택, 즐겨찾기 이동, 편집으로 이어지는 흐름",
             nodes: [
@@ -752,6 +760,22 @@ export const projects: Project[] = [
               { label: "삭제 / 이름 변경" },
             ],
             caption: "분석 결과를 생성하는 단계 이후에도 실제 학습에 사용할 수 있도록 관리 기능을 연결했습니다.",
+          },
+          {
+            id: "catchvoca-wordbook-list-detail",
+            type: "before-after",
+            title: "단어장 목록과 상세 학습정보",
+            before: {
+              label: "단어장 목록",
+              src: "/projects/catchvoca/images/catchvoca-wordbook-list.webp",
+              description: "생성된 단어와 뜻을 한눈에 확인하는 단어장 목록 화면",
+            },
+            after: {
+              label: "단어 상세",
+              src: "/projects/catchvoca/images/catchvoca-word-detail.webp",
+              description: "뜻, 품사, 예문, 번역, 동의어와 반의어를 확인하는 상세 화면",
+            },
+            caption: "생성된 단어를 목록에서 확인하고 상세 학습정보로 확장해 사용하는 흐름입니다.",
           },
         ],
       },
@@ -764,17 +788,7 @@ export const projects: Project[] = [
         "다중 선택, 삭제, 이름 변경, 즐겨찾기 단어장 생성과 이동 기능 구현",
         "현재 운영 Backend는 종료되어, 포트폴리오 시연은 기존 API 응답 구조를 기반으로 복원한 Demo 환경을 사용합니다.",
       ],
-      media: [
-        placeholderMedia("catchvoca-main-input", "CatchVoca 메인 입력 화면"),
-        placeholderMedia("catchvoca-text-input", "텍스트 입력 화면"),
-        placeholderMedia("catchvoca-analysis-loading", "분석 대기 Loading 화면"),
-        placeholderMedia("catchvoca-generated-wordbook", "생성된 단어장 화면"),
-        placeholderMedia("catchvoca-word-detail", "단어 상세 학습정보 화면"),
-        placeholderMedia("catchvoca-multi-select", "다중 선택 화면"),
-        placeholderMedia("catchvoca-favorite-result", "즐겨찾기 이동 결과 화면"),
-        placeholderMedia("catchvoca-analysis-demo", "입력부터 단어장 생성까지", "video"),
-        placeholderMedia("catchvoca-favorite-demo", "다중 선택부터 즐겨찾기 이동까지", "video"),
-      ],
+      media: [],
     },
     learnings: [
       "AI 기능 자체보다 사용자가 실제로 사용할 수 있는 흐름으로 연결하는 것이 중요하다는 점을 배웠습니다.",

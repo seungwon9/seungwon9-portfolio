@@ -19,9 +19,11 @@ export function ResultDemo({ project }: { project: Project }) {
         ) : (
           <p className="empty-note">검증 가능한 결과와 근거를 확인한 뒤 추가할 예정입니다.</p>
         )}
-        <div className="result-media-grid">
-          {project.resultAndDemo.media.map((media) => <MediaBlock media={media} key={media.id} />)}
-        </div>
+        {project.resultAndDemo.media.length ? (
+          <div className="result-media-grid">
+            {project.resultAndDemo.media.map((media) => <MediaBlock media={media} key={media.id} />)}
+          </div>
+        ) : null}
       </Container>
     </section>
   );
