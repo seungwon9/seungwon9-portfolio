@@ -3,10 +3,9 @@ import { Container } from "@/components/ui/container";
 import { profile } from "@/data/profile";
 
 const navigation = [
-  { label: "Projects", href: "/#projects" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Contact", href: "/#contact" },
+  { label: "기술", href: "/#skills" },
+  { label: "경험", href: "/#experience" },
+  { label: "프로젝트", href: "/#projects" },
 ];
 
 export function SiteHeader() {

@@ -6,10 +6,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://seungwon9-portfolio.vercel.app"),
   title: {
-    default: "Seungwon | Developer Portfolio",
-    template: "%s | Seungwon Portfolio",
+    default: "신승원 | Software Developer",
+    template: "%s | 신승원",
   },
-  description: "문제를 이해하고 판단하며 작동하는 시스템으로 만든 과정을 소개하는 개발자 포트폴리오입니다.",
+  description: "앱·웹, 인지훈련 게임, AI 단어장, 업무 자동화와 제조업 ERP 개발 경험을 소개합니다.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

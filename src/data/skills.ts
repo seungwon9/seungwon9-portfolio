@@ -1,22 +1,22 @@
 export const skillGroups = [
   {
-    title: "Web & Desktop",
-    description: "업무 흐름과 데이터 관계를 다루는 웹·데스크톱 애플리케이션 개발",
+    title: "웹 · 데스크톱",
+    description: "제조 ERP, 관리자 웹, 웹 기반 게임 실행 환경",
     technologies: ["React", "Next.js", "TypeScript", "Electron"],
   },
   {
-    title: "Mobile & Interactive",
-    description: "모바일 서비스와 입력·판정이 필요한 인터랙티브 콘텐츠 개발",
+    title: "모바일 · 인터랙티브",
+    description: "모바일 서비스와 인지훈련 게임 개발",
     technologies: ["Flutter", "Dart", "Phaser3", "Unity"],
   },
   {
-    title: "Data & Integration",
-    description: "로컬 데이터 저장, 인증, Backend API를 사용자 기능에 연결",
+    title: "데이터 · 연동",
+    description: "로컬 데이터 관리, 인증, Backend 연동",
     technologies: ["SQLite", "Firebase", "REST API"],
   },
   {
-    title: "Automation & Embedded",
-    description: "반복 업무 자동화와 하드웨어 제어 프로그램 개발",
+    title: "자동화 · 임베디드",
+    description: "업무 자동화 프로그램과 펌웨어 개발",
     technologies: ["Python", "C", "STM32"],
   },
 ];
