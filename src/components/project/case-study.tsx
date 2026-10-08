@@ -1,60 +1,81 @@
 import { MediaBlock } from "@/components/media/media-block";
-import type { CaseContent, CaseStage, ProblemSolvingCase } from "@/types/project";
+import { HighlightedText } from "@/components/project/highlighted-text";
+import type { ProjectStory, ProjectStoryBlock } from "@/types/project";
 
-const steps: Array<{
-  key: CaseStage;
-  label: string;
-  dataKey: keyof Pick<ProblemSolvingCase, "problem" | "decision" | "implementation" | "evidenceResult">;
-}> = [
-  { key: "problem", label: "Situation / Problem", dataKey: "problem" },
-  { key: "decision", label: "Decision / Solution", dataKey: "decision" },
-  { key: "implementation", label: "Implementation", dataKey: "implementation" },
-  { key: "evidenceResult", label: "Evidence / Result", dataKey: "evidenceResult" },
-];
-
-function StepContent({ content }: { content: CaseContent }) {
+function InlineFlow({ items, label }: { items: string[]; label?: string }) {
   return (
-    <>
-      <p>{content.summary}</p>
-      {content.details?.length ? (
-        <ul>{content.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-      ) : null}
-    </>
+    <div className="inline-flow-wrap">
+      {label ? <span className="content-label">{label}</span> : null}
+      <ol className="inline-flow" aria-label={label}>
+        {items.map((flowItem) => <li key={flowItem}>{flowItem}</li>)}
+      </ol>
+    </div>
   );
 }
 
-export function CaseStudy({ item, index }: { item: ProblemSolvingCase; index: number }) {
-  const unplacedMedia = item.media?.filter((media) => !media.placement) ?? [];
+function StoryBlock({ block }: { block: ProjectStoryBlock }) {
+  if (block.type === "paragraph") {
+    return <HighlightedText content={block.content} />;
+  }
+
+  if (block.type === "points") {
+    return <ul>{block.items.map((point) => <li key={point}>{point}</li>)}</ul>;
+  }
+
+  if (block.type === "inline-flow") {
+    return <InlineFlow items={block.items} label={block.label} />;
+  }
+
+  if (block.type === "subheading") {
+    return <h4 className="project-story-subheading">{block.title}</h4>;
+  }
 
   return (
-    <article className="case-study" id={item.id}>
-      <header className="case-header">
-        <span>Case {String(index + 1).padStart(2, "0")}</span>
-        <h3>{item.title}</h3>
-      </header>
-      <div className="case-story-grid">
-        {steps.map((step) => {
-          const content = item[step.dataKey] as CaseContent | undefined;
-          const stageMedia = item.media?.filter((media) => media.placement === step.key) ?? [];
+    <div className={`project-story-media project-story-media-${block.layout ?? "grid"}`}>
+      {block.items.map((media) => <MediaBlock media={media} key={media.id} />)}
+    </div>
+  );
+}
 
-          if (!content) return null;
-
-          return (
-            <section className="case-story-step" key={step.key}>
-              <span className="case-story-label">{item.labels?.[step.key] ?? step.label}</span>
-              <div className="case-story-copy">
-                <StepContent content={content} />
-                {stageMedia.map((media) => <MediaBlock media={media} key={media.id} />)}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-      {unplacedMedia.length ? (
-        <div className={`case-media-grid case-media-${item.mediaLayout ?? "grid"}`}>
-          {unplacedMedia.map((media) => <MediaBlock media={media} key={media.id} />)}
-        </div>
+export function ProjectStoryCard({
+  item,
+  index,
+  numbered = true,
+}: {
+  item: ProjectStory;
+  index: number;
+  numbered?: boolean;
+}) {
+  return (
+    <article className="project-story" id={item.id}>
+      {item.title ? (
+        <header className="project-story-header">
+          <h3>{numbered ? <span>{index + 1}.</span> : null} {item.title}</h3>
+        </header>
       ) : null}
+      {item.blocks?.length ? (
+        <div className="project-story-blocks">
+          {item.blocks.map((block, blockIndex) => (
+            <StoryBlock block={block} key={`${item.id}-${block.type}-${blockIndex}`} />
+          ))}
+        </div>
+      ) : (
+        <>
+          <div className="project-story-copy">
+            {item.paragraphs?.map((paragraph) => (
+              <HighlightedText content={paragraph} key={paragraph.text} />
+            ))}
+            {item.points?.length ? (
+              <ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul>
+            ) : null}
+          </div>
+          {item.media?.length ? (
+            <div className={`project-story-media project-story-media-${item.mediaLayout ?? "grid"}`}>
+              {item.media.map((media) => <MediaBlock media={media} key={media.id} />)}
+            </div>
+          ) : null}
+        </>
+      )}
     </article>
   );
 }

@@ -1,16 +1,9 @@
 export type PublicationStatus = "draft" | "published";
 
-export type CaseStage =
-  | "problem"
-  | "decision"
-  | "implementation"
-  | "evidenceResult";
-
 type MediaBase = {
   id: string;
   title: string;
   caption?: string;
-  placement?: CaseStage;
 };
 
 export type ImageMedia = MediaBase & {
@@ -55,29 +48,30 @@ export type ProjectMedia =
   | BeforeAfterMedia
   | DiagramMedia;
 
-export type CaseContent = {
-  summary: string;
-  details?: string[];
+export type HighlightedText = {
+  text: string;
+  emphasis?: string;
 };
 
-export type ProblemSolvingCase = {
+export type ProjectStoryBlock =
+  | { type: "paragraph"; content: HighlightedText }
+  | { type: "points"; items: string[] }
+  | { type: "inline-flow"; items: string[]; label?: string }
+  | { type: "subheading"; title: string }
+  | {
+      type: "media";
+      items: ProjectMedia[];
+      layout?: "grid" | "sequence" | "stack";
+    };
+
+export type ProjectStory = {
   id: string;
-  title: string;
-  labels?: Partial<Record<CaseStage, string>>;
+  title?: string;
+  blocks?: ProjectStoryBlock[];
+  paragraphs?: HighlightedText[];
+  points?: string[];
+  media?: ProjectMedia[];
   mediaLayout?: "grid" | "sequence" | "stack";
-  problem: CaseContent;
-  decision?: CaseContent;
-  implementation?: CaseContent;
-  evidenceResult?: CaseContent;
-  media?: ProjectMedia[];
-};
-
-export type ContributionItem = {
-  id: string;
-  title: string;
-  summary: string;
-  scope?: "direct" | "collaboration";
-  media?: ProjectMedia[];
 };
 
 export type Project = {
@@ -88,8 +82,9 @@ export type Project = {
   eyebrow: string;
   shortDescription: string;
   homeDescription?: string;
-  overview: string;
+  overview: HighlightedText[];
   overviewMedia: ProjectMedia;
+  overviewGallery?: ProjectMedia[];
   cardMedia?: ImageMedia;
   period?: string;
   role?: string;
@@ -99,15 +94,17 @@ export type Project = {
   projectStatus?: string;
   technologies: string[];
   keywords: string[];
-  context: string[];
-  responsibilities: string[];
-  collaborationScope: string[];
-  contributions: ContributionItem[];
   technologyScope: {
     direct: string[];
     collaboration: string[];
   };
-  problemSolvingCases: ProblemSolvingCase[];
+  developmentExperiences: ProjectStory[];
+  problemSolvingExperiences?: ProjectStory[];
+  problemSolvingTitle?: string;
+  supportingProblems?: Array<{
+    title: string;
+    content: HighlightedText;
+  }>;
   operationalDecisions?: {
     title: string;
     description?: string;
@@ -116,12 +113,7 @@ export type Project = {
       summary: string;
     }>;
   };
-  resultAndDemo: {
-    summary: string;
-    evidence: string[];
-    media: ProjectMedia[];
-  };
-  learnings: string[];
+  learnings: HighlightedText[];
   seo: {
     title: string;
     description: string;

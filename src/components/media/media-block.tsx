@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ImageLightbox } from "@/components/media/image-lightbox";
 import type { ProjectMedia } from "@/types/project";
 
 function Placeholder({ type, title }: { type: string; title: string }) {
@@ -41,7 +41,7 @@ export function MediaBlock({ media, eager = false }: { media: ProjectMedia; eage
             <div className="compare-panel" key={item.label}>
               <span className="compare-label">{item.label}</span>
               {item.src ? (
-                <Image src={item.src} alt={item.description} width={960} height={640} />
+                <ImageLightbox src={item.src} alt={item.description} width={960} height={640} />
               ) : item.items?.length ? (
                 <div className="compare-content">
                   <p>{item.description}</p>
@@ -78,7 +78,7 @@ export function MediaBlock({ media, eager = false }: { media: ProjectMedia; eage
     return (
       <figure className="media-figure diagram-figure">
         <div className="diagram-heading">
-          <span className="media-type">Decision flow</span>
+          <span className="media-type">구조 / 흐름</span>
           <h5>{media.title}</h5>
           {media.description ? <p>{media.description}</p> : null}
         </div>
@@ -98,12 +98,12 @@ export function MediaBlock({ media, eager = false }: { media: ProjectMedia; eage
   return (
     <figure className="media-figure">
       {media.src ? (
-        <Image
+        <ImageLightbox
           src={media.src}
           alt={media.alt}
           width={media.width ?? 1440}
           height={media.height ?? 900}
-          loading={eager ? "eager" : "lazy"}
+          eager={eager}
         />
       ) : (
         <Placeholder type={media.type.toUpperCase()} title={media.title} />

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MyContribution } from "@/components/project/context-role";
 import { TechLearnings } from "@/components/project/learnings";
-import { ProblemSolvingCases } from "@/components/project/problem-solving-cases";
+import { ProjectStorySection } from "@/components/project/problem-solving-cases";
 import { ProjectNavigation } from "@/components/project/project-navigation";
 import { ProjectOverview } from "@/components/project/project-overview";
-import { ResultDemo } from "@/components/project/result-demo";
 import { getAdjacentProjects, getProjectBySlug, getPublishedProjects } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -39,13 +37,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <>
       <ProjectOverview project={project} />
-      <MyContribution project={project} />
-      <ProblemSolvingCases
-        cases={project.problemSolvingCases}
-        operationalDecisions={project.operationalDecisions}
+      <ProjectStorySection
+        id="development"
+        eyebrow="01 / 기능 개발"
+        title="주요 기능 개발"
+        stories={project.developmentExperiences}
+        tinted
       />
-      <ResultDemo project={project} />
-      <TechLearnings project={project} />
+      {project.problemSolvingExperiences?.length ? (
+        <ProjectStorySection
+          id="problem-solving"
+          eyebrow="02 / 문제 해결"
+          title={project.problemSolvingTitle ?? "문제 해결 경험"}
+          stories={project.problemSolvingExperiences}
+          numbered={false}
+        />
+      ) : null}
+      {project.learnings.length ? <TechLearnings project={project} /> : null}
       <ProjectNavigation previous={previous} next={next} />
     </>
   );
