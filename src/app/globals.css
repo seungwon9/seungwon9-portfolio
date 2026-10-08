@@ -883,8 +883,7 @@ video {
 .contribution-scope ul,
 .contribution-collaboration ul,
 .project-story-copy ul,
-.evidence-list,
-.learnings-grid ul {
+.evidence-list {
   padding-left: 1.15rem;
   color: var(--muted);
   line-height: 1.75;
@@ -1109,6 +1108,11 @@ video {
 
 .media-figure {
   margin: 0;
+}
+
+.media-figure-medium {
+  width: 66.666%;
+  margin-inline: auto;
 }
 
 .media-zoom-trigger {
@@ -1466,35 +1470,6 @@ video {
   color: var(--muted);
 }
 
-.learnings-section {
-  padding: clamp(5rem, 10vw, 9rem) 0;
-  background: var(--ink);
-  color: white;
-}
-
-.learnings-section .eyebrow {
-  color: #a9c8bc;
-}
-
-.learnings-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
-.learnings-grid h2 {
-  margin: 0;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  letter-spacing: -0.06em;
-}
-
-.learnings-grid p,
-.learnings-grid ul {
-  margin: 0;
-  color: #bfc5c1;
-  line-height: 1.8;
-}
-
 .technology-scope-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1621,6 +1596,7 @@ video {
   .project-story-media > :last-child:nth-child(odd) { grid-column: 1 / -1; }
   .project-overview-media-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-overview-media-3 > :first-child { grid-column: 1 / -1; }
+  .media-figure-medium { width: 85%; }
   .supporting-problem-grid { grid-template-columns: 1fr; }
   .operational-decisions { grid-template-columns: 1fr; }
 }
@@ -1664,6 +1640,7 @@ video {
   .result-media-grid,
   .before-after-grid { grid-template-columns: 1fr; }
   .project-story-media > :last-child:nth-child(odd) { grid-column: auto; }
+  .media-figure-medium { width: 100%; }
   .result-media-grid > :first-child { grid-column: span 1; }
 
   .operational-decision-grid { grid-template-columns: 1fr; }
@@ -1680,7 +1657,6 @@ video {
   .diagram-flow-cards { grid-template-columns: 1fr; }
   .diagram-node { min-height: 70px; }
   .media-placeholder { min-height: 270px; }
-  .learnings-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .project-navigation-inner { grid-template-columns: 1fr; }
   .project-navigation a + a,
   .project-navigation .next-project { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }

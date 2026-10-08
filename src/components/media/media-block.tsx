@@ -95,8 +95,10 @@ export function MediaBlock({ media, eager = false }: { media: ProjectMedia; eage
     );
   }
 
+  const displaySize = media.type === "image" ? media.displaySize : undefined;
+
   return (
-    <figure className="media-figure">
+    <figure className={`media-figure${displaySize ? ` media-figure-${displaySize}` : ""}`}>
       {media.src ? (
         <ImageLightbox
           src={media.src}

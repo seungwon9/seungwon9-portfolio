@@ -12,6 +12,7 @@ export type ImageMedia = MediaBase & {
   alt: string;
   width?: number;
   height?: number;
+  displaySize?: "medium";
 };
 
 export type VideoMedia = MediaBase & {
@@ -113,7 +114,6 @@ export type Project = {
       summary: string;
     }>;
   };
-  learnings: HighlightedText[];
   seo: {
     title: string;
     description: string;

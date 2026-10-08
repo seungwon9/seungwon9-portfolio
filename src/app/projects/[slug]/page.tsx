@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { TechLearnings } from "@/components/project/learnings";
 import { ProjectStorySection } from "@/components/project/problem-solving-cases";
 import { ProjectNavigation } from "@/components/project/project-navigation";
 import { ProjectOverview } from "@/components/project/project-overview";
@@ -53,7 +52,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           numbered={false}
         />
       ) : null}
-      {project.learnings.length ? <TechLearnings project={project} /> : null}
       <ProjectNavigation previous={previous} next={next} />
     </>
   );

@@ -29,7 +29,6 @@ export function ProjectOverview({ project }: { project: Project }) {
             <a href="#introduction">프로젝트 소개</a>
             <a href="#development">주요 기능 개발</a>
             {project.problemSolvingExperiences?.length ? <a href="#problem-solving">문제 해결 경험</a> : null}
-            {project.learnings.length ? <a href="#retrospective">회고</a> : null}
           </nav>
         </div>
         <div className={`project-overview-media project-overview-media-${overviewMedia.length}`}>
